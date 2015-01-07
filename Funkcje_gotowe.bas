@@ -1,5 +1,5 @@
 Attribute VB_Name = "Funkcje_gotowe"
-' Zestaw  makr potrzebnych do obs³ugi pliku
+' Zestaw  makr potrzebnych do obsÅ‚ugi pliku
 ' Autor: Witold Charewicz ( witia1@o2.pl )
 '
 
@@ -25,7 +25,7 @@ Function txt_new(nazwa As String, sciezka As String, Optional tresc As String) A
 blad:
     txt_new = False
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
@@ -52,7 +52,7 @@ Function txt_add(nazwa As String, sciezka As String, tresc As String) As Boolean
 blad:
     txt_add = False
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
@@ -68,7 +68,7 @@ Function istnieje_plik(nazwa As String, sciezka As String) As Boolean
     Exit Function
 blad:
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
@@ -83,7 +83,7 @@ Function istnieje_folder(sciezka As String) As Boolean
     Exit Function
 blad:
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
@@ -105,7 +105,7 @@ Function nowy_folder(nazwa As String, sciezka As String) As Boolean
 blad:
     nowy_folder = False
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
@@ -131,7 +131,7 @@ Function log_to_txt(tresc As String, nazwa As String, sciezka As String) As Bool
 blad:
     log_to_txt = False
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
-    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.Path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "BÂ³Â¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
 End Function
 
