@@ -1,2 +1,0 @@
-2015-01-07, 04:40:20	Funkcja: istnieje_folder	Niezdefiniowany. 52: Bad file name or number
-2015-01-07, 04:45:16	Funkcja: istnieje_folder	Niezdefiniowany. 52: Bad file name or number

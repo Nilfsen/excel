@@ -13,3 +13,11 @@ v1000
 	8		Procedura Export_makr - exportuje pliki .bas do folderu !archiwum oraz uaktualnia pliki w folderze github
 
 
+v1001
+	1		Nie zapisuje kopi pliku makra.xls w katalogu github, tylko wyeksportowane makra
+	2		dodana funkcja zwick_set_param
+	3		Dodana publiczna zmienna ilosc_blad do sledzenia ilosci b³êdów w czasie wykonywania procedur
+	4		procedura export_makr bêdzie tworzyæ log dodawany do folderu /!archiwum/bie¿¹ca_wersja/
+	5		Dodana funkcja kopiuj_plik - kopiuje plik z jednego folderu do drugiego, opcjonalnie zmienia nazwê kopii
+	6		procedura export_makr bêdzie tworzyæ log dodawany do folderu github ( usuwa starszy )
+	7		nowa funkcja kopiuj_folder

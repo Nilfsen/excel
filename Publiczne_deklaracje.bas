@@ -7,5 +7,6 @@ Attribute VB_Name = "Publiczne_deklaracje"
     Public opisz_blad As String
     Public gdzie_blad As String
     Public old_gdzie_blad As String
+    Public ilosc_blad As Double
 
 
