@@ -1,0 +1,13 @@
+2015-01-08, 06:33:11	Dodano nowy folder: H:\work\!archiwum\v1006
+2015-01-08, 06:33:11	Usuniête pliki .bas i .xls z folderu: D:\!Github\excel\
+2015-01-08, 06:33:11	Wyeksportowano: Funkcje_gotowe.bas do:  H:\work\!archiwum\v1006\
+2015-01-08, 06:33:11	Wyeksportowano: Funkcje_gotowe.bas do:  D:\!Github\excel\
+2015-01-08, 06:33:11	Wyeksportowano: Procedury_gotowe.bas do:  H:\work\!archiwum\v1006\
+2015-01-08, 06:33:11	Wyeksportowano: Procedury_gotowe.bas do:  D:\!Github\excel\
+2015-01-08, 06:33:11	Wyeksportowano: Procedury_w_przygotowaniu.bas do:  H:\work\!archiwum\v1006\
+2015-01-08, 06:33:11	Wyeksportowano: Procedury_w_przygotowaniu.bas do:  D:\!Github\excel\
+2015-01-08, 06:33:11	Wyeksportowano: Publiczne_deklaracje.bas do:  H:\work\!archiwum\v1006\
+2015-01-08, 06:33:11	Wyeksportowano: Publiczne_deklaracje.bas do:  D:\!Github\excel\
+2015-01-08, 06:33:11	Stworzony plik lista_zmian.txt w katalogu:  H:\work\!archiwum\v1006\
+2015-01-08, 06:33:11	Zaktualizowana lista zmian readme.txt dla Github
+2015-01-08, 06:33:12	Zakoñczono export wersji: v1006

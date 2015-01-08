@@ -21,6 +21,7 @@ Function txt_new(nazwa As String, sciezka As String, Optional tresc As String) A
     plik.WriteLine tresc
     plik.Close
     txt_new = True
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     txt_new = False
@@ -49,6 +50,7 @@ Function txt_add(nazwa As String, sciezka As String, tresc As String) As Boolean
     plik.WriteLine tresc
     plik.Close
     txt_add = True
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     txt_add = False
@@ -67,6 +69,7 @@ Function istnieje_plik(nazwa As String, sciezka As String) As Boolean
     If Right(sciezka, 1) <> "\" Then sciezka = sciezka & "\"
     Set objFSO = CreateObject("Scripting.FileSystemObject")
     istnieje_plik = objFSO.fileExists(sciezka & nazwa)
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
@@ -83,6 +86,7 @@ Function istnieje_folder(sciezka As String) As Boolean
     On Error GoTo blad
     Set objFSO = CreateObject("Scripting.FileSystemObject")
     istnieje_folder = objFSO.folderExists(sciezka)
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
@@ -101,10 +105,12 @@ Function nowy_folder(nazwa As String, sciezka As String) As Boolean
     If Right(sciezka, 1) <> "\" Then sciezka = sciezka & "\"
     If istnieje_folder(sciezka & nazwa) Then
         nowy_folder = True
+        gdzie_blad = old_gdzie_blad
         Exit Function
     End If
         Set folder = objFSO.CreateFolder(sciezka & nazwa)
         nowy_folder = True
+        gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     nowy_folder = False
@@ -132,6 +138,7 @@ Function log_to_txt(tresc As String, nazwa As String, sciezka As String) As Bool
         Call txt_add(nazwa, sciezka, tresc)
     End If
     log_to_txt = True
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     log_to_txt = False
@@ -184,6 +191,7 @@ Function zwick_set_param(numer_parametru As Integer, rodzaj As String, wartosc A
             GoTo blad
     End Select
     If komentarz_skryptu <> "" Then zwick_set_param = zwick_set_param & " ; " & komentarz_skryptu
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     zwick_set_param = "b³¹d"
@@ -195,7 +203,6 @@ End Function
 
 Function kopiuj_plik(nazwa_pliku As String, kopiuj_z As String, kopiuj_do As String, Optional nowa_nazwa As String, Optional czy_nadpisac_istniejacy As Boolean) As Boolean
     Dim objFSO As Object
-    
     
     gdzie_blad = "Funkcja: kopiuj_plik"
     On Error GoTo blad
@@ -229,9 +236,40 @@ Function kopiuj_plik(nazwa_pliku As String, kopiuj_z As String, kopiuj_do As Str
     If nowa_nazwa = "" Then nowa_nazwa = nazwa_pliku
     objFSO.CopyFile kopiuj_z & nazwa_pliku, kopiuj_do & nowa_nazwa, czy_nadpisac_istniejacy
     kopiuj_plik = True
+    gdzie_blad = old_gdzie_blad
     Exit Function
 blad:
     kopiuj_plik = False
+    If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
+    If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
+    gdzie_blad = old_gdzie_blad
+    ilosc_blad = ilosc_blad + 1
+End Function
+
+Function kopiuj_folder(folder_zrodlowy As String, kopiuj_do As String, Optional czy_nadpisac_istniejacy As Boolean) As Boolean
+    Dim objFSO As Object
+    
+    gdzie_blad = "Funkcja: kopiuj_folder"
+    On Error GoTo blad
+    Set objFSO = CreateObject("Scripting.FileSystemObject")
+    If folder_zrodlowy = "" Then
+        opisz_blad = "Wartoœæ folder_zrodlowy nie mo¿e byæ pusta"
+        GoTo blad
+    End If
+    If kopiuj_do = "" Then
+        opisz_blad = "Wartoœæ kopiuj_do nie mo¿e byæ pusta"
+        GoTo blad
+    End If
+    If istnieje_folder(folder_zrodlowy) = False Then
+        opisz_blad = "Brak wskazanego folderu Ÿród³owego: " & folder_zrodlowy
+        GoTo blad
+    End If
+    objFSO.CopyFolder folder_zrodlowy, kopiuj_do, czy_nadpisac_istniejacy
+    kopiuj_folder = True
+    gdzie_blad = old_gdzie_blad
+    Exit Function
+blad:
+    kopiuj_folder = False
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
     If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad

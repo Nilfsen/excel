@@ -23,17 +23,17 @@ Sub export_makr()
     Set wbSource = Application.Workbooks(ActiveWorkbook.Name)
         path2 = "D:\!Github\excel\"
     path = ActiveWorkbook.path & "\!archiwum\" & wersja
-    Call log_to_txt("Rozpoczêto export wersji: " & wersja, "v" & wersja & "_konwerter_log", path)
+    Call log_to_txt("Rozpoczêto export wersji: " & wersja, wersja & "_konwerter_log", path)
     Call nowy_folder(wersja, ActiveWorkbook.path & "\!archiwum\")
-    Call log_to_txt("Dodano nowy folder: " & ActiveWorkbook.path & "\!archiwum\" & wersja, "v" & wersja & "_konwerter_log", path)
+    Call log_to_txt("Dodano nowy folder: " & ActiveWorkbook.path & "\!archiwum\" & wersja, wersja & "_konwerter_log", path)
     If wbSource.VBProject.Protection = 1 Then
-        Call log_to_txt("Edytor VBA jest chroniony. Export makr niemo¿liwy. Przerwano.", "v" & wersja & "_konwerter_log", path)
+        Call log_to_txt("Edytor VBA jest chroniony. Export makr niemo¿liwy. Przerwano.", wersja & "_konwerter_log", path)
         Exit Sub
     End If
     On Error Resume Next
         Kill path2 & "*.bas"
         Kill path2 & "*.xls"
-        Call log_to_txt("Usuniête pliki .bas i .xls z folderu: " & path2, "v" & wersja & "_konwerter_log", path)
+        Call log_to_txt("Usuniête pliki .bas i .xls z folderu: " & path2, wersja & "_konwerter_log", path)
     On Error GoTo 0
     
     For Each cmpVBE In wbSource.VBProject.VBComponents
@@ -57,10 +57,10 @@ Sub export_makr()
         End Select
         If bExport = True Then
             cmpVBE.Export path & "\" & nazwa
-            Call log_to_txt("Wyeksportowano: " & nazwa & " do:  " & path, "v" & wersja & "_konwerter_log", path)
+            Call log_to_txt("Wyeksportowano: " & nazwa & " do:  " & path, wersja & "_konwerter_log", path)
             If istnieje_folder(path2) = True Then
                 cmpVBE.Export path2 & nazwa
-                Call log_to_txt("Wyeksportowano: " & nazwa & " do:  " & path2, "v" & wersja & "_konwerter_log", path)
+                Call log_to_txt("Wyeksportowano: " & nazwa & " do:  " & path2, wersja & "_konwerter_log", path)
             End If
         End If
     Next cmpVBE
@@ -74,14 +74,14 @@ Sub export_makr()
     Next x
     Sheets("ustawienia").Range("E3:Q52").ClearContents
     Call txt_new("lista_zmian.txt", path, log)
-    Call log_to_txt("Stworzony plik lista_zmian.txt w katalogu:  " & path, "v" & wersja & "_konwerter_log", path)
+    Call log_to_txt("Stworzony plik lista_zmian.txt w katalogu:  " & path, wersja & "_konwerter_log", path)
     If istnieje_folder(path2) = True Then
         Call txt_add("readme.txt", path2, log)
-        Call log_to_txt("Zaktualizowana lista zmian readme.txt dla Github", "v" & wersja & "_konwerter_log", path)
+        Call log_to_txt("Zaktualizowana lista zmian readme.txt dla Github", wersja & "_konwerter_log", path)
     End If
     ActiveWorkbook.Save
-    Call log_to_txt("Zakoñczono export wersji: " & wersja, "v" & wersja & "_konwerter_log", path)
-    Call kopiuj_plik("v" & wersja & "_konwerter_log", path, path2, , True)
+    Call log_to_txt("Zakoñczono export wersji: " & wersja, wersja & "_konwerter_log", path)
+    Call kopiuj_plik(wersja & "_konwerter_log.txt", path, path2, , True)
 zakoncz:
 If ilosc_blad > 0 Then
 ' show log b³êdów
@@ -89,7 +89,7 @@ End If
 ' show log konwersji
 Exit Sub
 blad:
-    Call log_to_txt("Przy konwersji wyst¹pi³y b³êdy. Przerwano.", "v" & wersja & "_konwerter_log", path)
+    Call log_to_txt("Przy konwersji wyst¹pi³y b³êdy. Przerwano.", wersja & "_konwerter_log", path)
     If opisz_blad = "" Then opisz_blad = "Niezdefiniowany. " & Err & ": " & Err.Description
     If log_to_txt(gdzie_blad & vbTab & opisz_blad, "log_" & ActiveWorkbook.Name, ActiveWorkbook.path) = False Then MsgBox gdzie_blad & vbTab & opisz_blad, vbOK, "B³¹d " & ActiveWorkbook.Name
     gdzie_blad = old_gdzie_blad
